@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Verification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
+        h1 {
+            color: #4CAF50;
+        }
+        p {
+            color: #333;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="status-title">Email Verified Successfully!</h1>
+        <p id="status-message">Your email has been successfully verified. You can now log in.</p>
+    </div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        if (params.get("error")) {
+            document.getElementById("status-title").textContent = "Verification Failed";
+            document.getElementById("status-title").classList.add("error");
+            document.getElementById("status-message").textContent = params.get("message") || "An error occurred during verification.";
+        }
+    </script>
+</body>
+</html>
